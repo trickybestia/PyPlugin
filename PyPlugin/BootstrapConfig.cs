@@ -9,7 +9,5 @@ namespace PyPlugin
         public bool IsEnabled { get; set; } = false;
         [Description("Path to the scripts folder.")]
         public string PluginsPath { get; set; }
-        [Description("Path to the YAML config file.")]
-        public string ConfigPath { get; set; }
     }
 }
