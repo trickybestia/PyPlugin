@@ -1,0 +1,1 @@
+This plugin sends broadcast to players every N seconds.
