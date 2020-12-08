@@ -32,8 +32,8 @@ jobs:
       - name: Move non-trash files into another build directory
         run: |
           mkdir build
-          cp -r buildWithTrash/dependencies buildWithTrash/
-          cp PyPlugin.dll buildWithTrash/
+          cp -r buildWithTrash/dependencies build/
+          cp PyPlugin.dll build/
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
