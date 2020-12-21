@@ -1,6 +1,7 @@
 ﻿using Exiled.API.Enums;
 using Exiled.API.Features;
 using System;
+using System.IO;
 using System.Reflection;
 
 namespace PyPlugin
@@ -33,6 +34,8 @@ namespace PyPlugin
         /// <inheritdoc/>
         public override void OnEnabled()
         {
+            Directory.CreateDirectory(Config.PluginsPath);
+
             PluginManager.LoadPlugins(Config.PluginsPath);
             PluginManager.EnableAll();
 

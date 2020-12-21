@@ -15,7 +15,6 @@ namespace PyPlugin
         public BootstrapConfig()
         {
             PluginsPath = Path.Combine(Paths.Plugins, "Python");
-            Directory.CreateDirectory(PluginsPath);
         }
     }
 }
