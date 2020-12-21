@@ -9,7 +9,7 @@ coroutine = 0
 
 def messagesBroadcasterCoroutine():
     for i in range(Application.targetFrameRate * MESSAGE_ROUND_START_DELAY):
-            yield Timing.WaitForOneFrame
+        yield Timing.WaitForOneFrame
     while True:
         for player in Player.List:
             player.Broadcast(MESSAGE_DURATION, MESSAGE)
