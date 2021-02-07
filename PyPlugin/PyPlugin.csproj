@@ -34,8 +34,8 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Bootstrap.cs" />
-    <Compile Include="BootstrapConfig.cs" />
+    <Compile Include="Plugin.cs" />
+    <Compile Include="PluginConfig.cs" />
     <Compile Include="EmbeddedScriptsApi\Coroutine.cs" />
     <Compile Include="PluginManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

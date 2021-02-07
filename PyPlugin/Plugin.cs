@@ -6,12 +6,12 @@ using System.Reflection;
 
 namespace PyPlugin
 {
-    internal class Bootstrap : Plugin<BootstrapConfig>
+    internal class Plugin : Plugin<PluginConfig>
     {
         /// <summary>
-        /// Instance of <see cref="Bootstrap"/>.
+        /// Instance of <see cref="Plugin"/>.
         /// </summary>
-        public static Bootstrap Instance { get; private set; }
+        public static Plugin Instance { get; private set; }
 
         /// <inheritdoc/>
         public override string Author { get; } = "TrickyBestia";
@@ -27,7 +27,7 @@ namespace PyPlugin
         public override Version Version => Assembly.GetName().Version;
 
         /// <inheritdoc/>
-        public Bootstrap()
+        public Plugin()
         {
             Instance = this;
         }
