@@ -18,10 +18,10 @@ jobs:
           dotnet-version: 5.0.x
 
       - name: Publish
-        run: dotnet publish -c Release -p:PublishProfile=Release
+        run: dotnet build -c Release
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: PyPlugin
-          path: PyPlugin/bin/publish
+          path: PyPlugin/bin/Release/net472/

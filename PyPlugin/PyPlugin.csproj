@@ -23,8 +23,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
-
+  
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="del &quot;$(TargetDir)*.xml&quot;&#xD;&#xA;mkdir &quot;$(TargetDir)dependencies&quot;&#xD;&#xA;move &quot;$(TargetDir)*.dll&quot; &quot;$(TargetDir)dependencies&quot;&#xD;&#xA;move &quot;$(TargetDir)dependencies\PyPlugin.dll&quot; &quot;$(TargetDir)&quot;" />
+    <Exec Command="mkdir &quot;$(TargetDir)dependencies&quot;&#xD;&#xA;move &quot;$(TargetDir)*.dll&quot; &quot;$(TargetDir)dependencies&quot;&#xD;&#xA;move &quot;$(TargetDir)dependencies\PyPlugin.dll&quot; &quot;$(TargetDir)&quot;" />
   </Target>
 </Project>
