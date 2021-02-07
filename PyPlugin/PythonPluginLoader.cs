@@ -50,8 +50,10 @@ namespace PyPlugin
             var embeddedScripts = resources.Where(resource => Regex.IsMatch(resource, @".*EmbeddedScripts\..*\.py"));
             var sources = embeddedScripts.Select(script =>
             {
-                using var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(script);
-                return GetScriptDataFromStream(stream);
+                using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(script))
+                {
+                    return GetScriptDataFromStream(stream);
+                }
             });
             var prioritySortedSources = sources.OrderByDescending(data => data.priority);
             foreach (var (priority, source) in prioritySortedSources)
@@ -60,8 +62,10 @@ namespace PyPlugin
 
         private static (int priority, ScriptSource source) GetScriptDataFromFile(string file)
         {
-            using var stream = new FileStream(file, FileMode.Open);
-            return GetScriptDataFromStream(stream);
+            using (var stream = new FileStream(file, FileMode.Open))
+            {
+                return GetScriptDataFromStream(stream);
+            }
         }
 
         private static (int priority, ScriptSource source) GetScriptDataFromStream(Stream stream)

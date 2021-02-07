@@ -9,34 +9,19 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v1.0.2
-
-      - name: Setup NuGet
-        uses: nuget/setup-nuget@v1
-
       - name: Pull repository
         uses: actions/checkout@v2.3.1
 
-      - name: Restore NuGet packages
-        run: nuget restore PyPlugin.sln
+      - name: Setup .NET 5.0 SDK
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.x
 
       - name: Build
-        run: |
-          msbuild PyPlugin.sln -p:Configuration=Release -p:OutDir=../buildWithTrash
-          if ($? -eq $false) { Exit 1 }
-
-      - name: Switch to solution direcotry
-        run: cd PyPlugin
-
-      - name: Move non-trash files into another build directory
-        run: |
-          mkdir build
-          cp -r buildWithTrash/dependencies build/
-          cp buildWithTrash/PyPlugin.dll build/
+        run: dotnet publish -c Release -p:PublishProfile=Release
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: PyPlugin
-          path: build
+          path: PyPlugin/publish
