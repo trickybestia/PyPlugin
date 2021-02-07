@@ -1,0 +1,30 @@
+{
+    "$schema": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
+    "settings": {
+        "documentationRules": {
+            "companyName": "TrickyBestia",
+            "copyrightText": "Copyright (c) {companyName}. All rights reserved.\nLicensed under the {licenseName} license.",
+            "headerDecoration": "-----------------------------------------------------------------------",
+            "variables": {
+                "licenseFile": "LICENSE.txt",
+                "licenseName": "CC BY-NC-SA 4.0"
+            }
+        },
+        "indentation": {
+            "useTabs": false,
+            "tabSize": 4,
+            "indentationSize": 4
+        },
+        "orderingRules": {
+            "blankLinesBetweenUsingGroups": "require",
+            "usingDirectivesPlacement": "outsideNamespace",
+            "systemUsingDirectivesFirst": true
+        },
+        "readabilityRules": {
+            "allowBuiltInTypeAliases": false
+        },
+        "layoutRules": {
+            "newlineAtEndOfFile": "omit"
+        }
+    }
+}

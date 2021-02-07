@@ -1,4 +1,11 @@
-﻿using System.Reflection;
+﻿// -----------------------------------------------------------------------
+// <copyright file="AssemblyInfo.cs" company="TrickyBestia">
+// Copyright (c) TrickyBestia. All rights reserved.
+// Licensed under the CC BY-NC-SA 4.0 license.
+// </copyright>
+// -----------------------------------------------------------------------
+
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("PyPlugin")]

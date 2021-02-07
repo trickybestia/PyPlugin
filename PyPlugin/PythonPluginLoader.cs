@@ -1,14 +1,22 @@
-﻿using Microsoft.Scripting;
-using Microsoft.Scripting.Hosting;
+﻿// -----------------------------------------------------------------------
+// <copyright file="PythonPluginLoader.cs" company="TrickyBestia">
+// Copyright (c) TrickyBestia. All rights reserved.
+// Licensed under the CC BY-NC-SA 4.0 license.
+// </copyright>
+// -----------------------------------------------------------------------
+
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
+using Microsoft.Scripting;
+using Microsoft.Scripting.Hosting;
+
 namespace PyPlugin
 {
     /// <summary>
-    /// Gives functionality to load <see cref="PythonPlugin"/>s.
+    /// A class that creates instances of the <see cref="PythonPlugin"/> class.
     /// </summary>
     public static class PythonPluginLoader
     {
@@ -31,6 +39,7 @@ namespace PyPlugin
 
             return new PythonPlugin(scriptScope);
         }
+
         /// <summary>
         /// Loads embedded scripts into given <see cref="ScriptScope"/>.
         /// </summary>
@@ -48,22 +57,28 @@ namespace PyPlugin
             foreach (var (priority, source) in prioritySortedSources)
                 source.Execute(scriptScope);
         }
+
         private static (int priority, ScriptSource source) GetScriptDataFromFile(string file)
         {
             using var stream = new FileStream(file, FileMode.Open);
             return GetScriptDataFromStream(stream);
         }
+
         private static (int priority, ScriptSource source) GetScriptDataFromStream(Stream stream)
         {
             string code = null;
             using (StreamReader reader = new StreamReader(stream))
+            {
                 code = reader.ReadToEnd();
+            }
 
             var firstLine = code.Substring(0, code.IndexOf('\n') + 1);
             var match = Regex.Match(firstLine.Replace(" ", string.Empty), @"#PRIORITY(\d+)");
             int priority = 0;
             if (match.Success)
+            {
                 int.TryParse(match.Result("$1"), out priority);
+            }
 
             return (priority, PluginManager.Engine.CreateScriptSourceFromString(code, SourceCodeKind.File));
         }
